@@ -1,0 +1,44 @@
+using System;
+using System.Collections.Generic;
+
+class MaximalSequenceOfEqualElements
+{
+    static void Main()
+    {
+        // Finds the maximal sequence of equal elements in an array.    
+         
+
+        Console.WriteLine("Type a length of array: ");
+        int length = int.Parse(Console.ReadLine());  // read from the console lenght of arrays
+        int[] array = new int[length];        
+        int counter = 1;
+        int maxCounter = 1;
+        int number = 0;
+        Console.WriteLine("Type members of array: ");
+        for (int j = 0; j < array.Length; j++)
+        {
+            array[j] = int.Parse(Console.ReadLine());
+        }        
+        for (int i = 1; i < (array.Length); i++)
+        {
+            if (array[i] == array[(i - 1)])
+            {
+                counter++;
+                if (counter > maxCounter)
+                {
+                    maxCounter = counter;
+                    number = array[i];
+                }
+            }
+            else
+            {
+                counter = 1;
+            }
+        }
+        for (int i = 0; i < maxCounter; i++)
+        {
+            Console.Write(number + " ");
+        }
+    }
+}
+
