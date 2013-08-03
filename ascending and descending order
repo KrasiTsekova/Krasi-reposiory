@@ -1,0 +1,68 @@
+using System;
+class MaximalElement
+{
+    /* Return the maximal element in a portion of array of integers starting at given index,
+    sorts an array in ascending / descending order.
+    */
+    static int Max(int[] arrayOfNumbers, int length, int index)
+    {
+        int counter = 0;
+        for (int i = index - 1; i < length; i++)
+        {
+            if (arrayOfNumbers[i] > counter)
+            {
+                counter = arrayOfNumbers[i];
+            }
+        }
+        return counter;
+
+    }
+
+    static int SortMethod(int[] arrayOfNumbers, int[] sorting, int length, int k)
+    {
+        //ascending order            
+        Array.Sort<int>(arrayOfNumbers);
+        foreach (int num in arrayOfNumbers)
+        {
+            Console.Write(num + " ");
+        }
+
+        Console.WriteLine();
+
+        // decenting Order   
+
+        Array.Reverse(arrayOfNumbers);
+
+        foreach (int num in arrayOfNumbers)
+        {
+            Console.Write(num + " ");
+        }
+
+        Console.WriteLine();
+
+        return 0;
+    }
+
+
+    static void Main()
+    {
+        Console.Write("Type the length of the array: ");
+        int length = int.Parse(Console.ReadLine());
+        int[] arrayOfNumbers = new int[length];
+        int[] sorting = new int[length];
+        Console.WriteLine("Type elements of array: ");
+        for (int i = 0; i < length; i++)
+        {
+            arrayOfNumbers[i] = int.Parse(Console.ReadLine());
+        }
+        int k = arrayOfNumbers[0];
+        Console.Write("Type the index at which start searching: ");
+        int index = int.Parse(Console.ReadLine());
+        Console.WriteLine("Maximal element [{0},{1}] is {2}.", index, length,
+            MaximalElement.Max(arrayOfNumbers, length, index));
+        Console.WriteLine();
+        Console.WriteLine("The array in descending and ascending order: ");
+        MaximalElement.SortMethod(arrayOfNumbers, sorting, length, k);
+    }
+}
+
