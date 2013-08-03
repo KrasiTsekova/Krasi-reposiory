@@ -1,0 +1,30 @@
+using System;
+
+class EuclideanAlgorithmForGCD
+{
+    static void Main()
+    {
+        // Calculates the greatest common divisor (GCD) of given two numbers. 
+        
+        Console.WriteLine("Type two numbers: ");
+        int firstNumber = int.Parse(Console.ReadLine());
+        int secondNumber = int.Parse(Console.ReadLine());
+        int number = 0;
+        if (firstNumber < secondNumber)
+        {
+            number = firstNumber;
+            firstNumber = secondNumber;
+            secondNumber = number;
+        }
+        int divisor;
+        do
+        {
+            divisor = firstNumber % secondNumber;
+            firstNumber = secondNumber;
+            secondNumber = divisor;
+        }
+        while (divisor != 0);
+
+       Console.WriteLine("The greatest common divisor is {0}", firstNumber);
+    }
+}
