@@ -1,0 +1,21 @@
+using System;
+
+    class ConvertNumeralSystem
+    {
+        /* Convert from any numeral system of given base s to any other numeral 
+        system of base d (2 ≤ s, d ≤  16).
+        */
+
+        static void Main()
+        {
+            Console.Write("Type a number to convert: ");
+            string number = Console.ReadLine();
+            Console.WriteLine();
+            Console.Write("Type base from numeral system of a number: ");
+            byte s = byte.Parse(Console.ReadLine());
+            Console.WriteLine();
+            Console.Write("Type base d from other numeral system: ");
+            byte d = byte.Parse(Console.ReadLine());
+            Console.WriteLine("\n{0} from {1} to {2} => {3}\n", number, s, d, Convert.ToString(Convert.ToInt32(number, s), d));
+        }
+    }
