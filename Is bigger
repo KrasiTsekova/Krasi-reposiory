@@ -1,0 +1,67 @@
+using System;
+
+class IsBigger
+{
+    /* Checks if the element at given position in given array of integers is bigger
+    than its two neighbors (when such exist).
+    */
+    static bool Max(int position, int[] arrayOfNumbers, int length, bool result)
+    {
+
+        if ((position - 1) == length)
+        {
+            result = (arrayOfNumbers[position - 1] > arrayOfNumbers[position - 2]);
+
+            return result;
+        }
+        if ((position - 1) == 0)
+        {
+            result = (arrayOfNumbers[position - 1] > arrayOfNumbers[position]);
+
+            return result;
+        }
+        else
+        {
+            result = ((arrayOfNumbers[position - 1] > arrayOfNumbers[position - 2]) &&
+                (arrayOfNumbers[position - 1] > arrayOfNumbers[position]));
+
+            return result;
+        }
+    }
+
+    static void Main()
+    {
+        Console.Write("Type the length of the array: ");
+        int length = int.Parse(Console.ReadLine());
+        int[] arrayOfNumbers = new int[length];
+        Console.WriteLine("Type numbers of array: ");
+        for (int i = 0; i < length; i++)
+        {
+            arrayOfNumbers[i] = int.Parse(Console.ReadLine());
+        }
+        int position = 0;
+        do
+        {
+            Console.Write("Type a position in array: ");
+            position = int.Parse(Console.ReadLine());
+        }
+        while (position > length);
+
+        bool result = false;
+        bool res = IsBigger.Max(position, arrayOfNumbers, length, result);
+
+
+        if (res == true)
+        {
+            Console.WriteLine("In {0} positon is number {1} and it is bigger then its neighbor/s",
+                   position, arrayOfNumbers[position - 1]);
+        }
+        else
+        {
+            Console.WriteLine("In {0} positon is number {1} and it is not bigger then its neighbor/s",
+                   position, arrayOfNumbers[position - 1]);
+        }
+
+    }
+}
+
