@@ -1,0 +1,83 @@
+using System;
+
+namespace _04.SurfaceOfATriangle
+{
+    /*  methods that calculate the surface of a triangle by given:
+    Side and an altitude to it; Three sides; Two sides and an angle between them. 
+    */
+
+    class SurfaceOfATriangle
+    {
+        static void Main()
+        {
+            Console.WriteLine("Choose how to calculate the surface of a triangle: ");
+            Console.WriteLine("1. By given side and altitude");
+            Console.WriteLine("2. By given three sides");
+            Console.WriteLine("3. By given two sides and an angle between them");
+            byte choice = byte.Parse(Console.ReadLine());
+            switch (choice)
+            {
+                //By given side and altitude
+                case 1:
+                    {
+                        Console.WriteLine(" Type a side: ");
+                        double side = double.Parse(Console.ReadLine());
+                        Console.WriteLine(" Type an altitude: ");
+                        double altitude = double.Parse(Console.ReadLine());
+                        Console.WriteLine("The surface is {0}", CalculateTheSirfaceByAltitude(side, altitude));
+                        Console.WriteLine();
+                        break;
+                    }
+
+                //By given three sides
+                case 2:
+                    {
+                        Console.WriteLine(" Type sideA: ");
+                        double sideA = double.Parse(Console.ReadLine());
+                        Console.WriteLine(" Type sideB: ");
+                        double sideB = double.Parse(Console.ReadLine());
+                        Console.WriteLine(" Type sideC: ");
+                        double sideC = double.Parse(Console.ReadLine());
+                        Console.WriteLine("The surface is {0}", CalculateTheSirfaceByThreeSides(sideA, sideB, sideC));
+                        Console.WriteLine();
+                        break;
+                    }
+
+                //By given two sides and an angle between them
+                case 3:
+                    {
+                        Console.WriteLine(" Type sideA: ");
+                        double sideA = double.Parse(Console.ReadLine());
+                        Console.WriteLine(" Type sideB: ");
+                        double sideB = double.Parse(Console.ReadLine());
+                        Console.WriteLine(" Give an angle between them: ");
+                        double angle = double.Parse(Console.ReadLine());
+                        Console.WriteLine("The surface is {0}", CalculateTheSirfaceByTwoSidesAndAnAngle(sideA, sideB, angle));
+                        Console.WriteLine();
+                        break;
+                    }
+                default:
+                    {
+                        throw new Exception("Invalid choice!");
+                    }
+            }
+        }
+
+        static double CalculateTheSirfaceByAltitude(double side, double altitude)
+        {
+            return ((side * altitude) / 2);
+        }
+
+        static double CalculateTheSirfaceByThreeSides(double sideA, double sideB, double sideC)
+        {
+            double halfPeremeter = ((sideA + sideB + sideC) / 2);
+            return Math.Sqrt(halfPeremeter * (halfPeremeter - sideA) * (halfPeremeter - sideB) * (halfPeremeter - sideC));
+        }
+
+        static double CalculateTheSirfaceByTwoSidesAndAnAngle(double sideA, double sideB, double angle)
+        {
+            double sin = Math.Sin((angle * Math.PI) / 180);
+            return ((sideA * sideB * sin) / 2);
+        }
+    }
+}
